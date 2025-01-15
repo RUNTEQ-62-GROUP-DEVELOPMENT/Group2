@@ -24,3 +24,4 @@ Things you may want to cover:
 * ...
 
 yasujima:test
+yasujima:sample
