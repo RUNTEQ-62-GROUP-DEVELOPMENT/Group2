@@ -1,3 +1,55 @@
 @import "bootstrap";
 @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css");
 @import "font-awesome";
+
+header {
+  display: flex;
+  height: 70px;
+  background-color: #000;
+}
+
+header #app-title {
+  margin-left: 20px;
+  color: #fff;
+  font-size: 48px;
+}
+
+#logined_app-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+#logined_app-header div {
+  align-self: center;
+}
+
+#logined_app-header #logout-link {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+#wrapper {
+  display: flex;
+}
+
+#wrapper main {
+  flex-grow: 1;
+}
+
+#side-menu {
+  width: 200px;
+  height: calc(100vh - 70px);
+  background-color: #CDCDCD;
+}
+
+#side-menu ul {
+  margin: 0;
+  padding: 0;
+  padding-top: 30px;
+  list-style: none;
+}
+
+#side-menu ul li {
+  margin-bottom: 30px;
+  text-align: center;
+}
