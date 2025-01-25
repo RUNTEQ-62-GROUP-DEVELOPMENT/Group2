@@ -1,0 +1,23 @@
+<div class="row py-2 border-top">
+  <div class="col-2 my-auto">
+    <%= goal.book.title %>
+  </div>
+  <div class="col-2">
+    <%= goal.start_date %>
+  </div>
+  <div class="col-2">
+    <%= goal.target_date %>
+  </div>
+  <div class="col-2">
+    <%= goal.pages_per_day %>
+  </div>
+  <div class="col-2">
+    <%= goal.reading_pages %>
+  </div>
+  <div class="col-2">
+    <div class="d-flex justify-content-end">
+      <%= link_to "編集", edit_goal_path(goal), class: "btn btn-sm btn-outline-primary me-2" %>
+      <%= button_to "削除", goal, method: :delete, class: "btn btn-sm btn-outline-danger" %>
+    </div>
+  </div>
+</div>

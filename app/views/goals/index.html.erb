@@ -1,0 +1,67 @@
+<h1>Goals</h1>
+<div class="card shadow mt-3">
+    <div class="card-header">
+    <%= icon_with_text("search", "検索条件") %>
+    </div>
+    <div class="card-body">
+        <%= search_form_for @search do |f| %>
+            <div class="row g3 mb-3">
+                <div class="col-2 col-xl-2">
+                    <%= f.label :book_title_cont, "Book", class: "form-label" %>
+                    <%= f.search_field :book_title_cont, class: "form-control" %>
+                </div>
+                <div class="col-2 col-xl-2">
+                    <%= f.label :start_date_gteq, "開始日", class: "form-label" %>
+                    <br>
+                    <%= f.date_select :start_date_gteq, order: [:year, :month, :day], use_month_numbers: true, include_blank: true, class: "form-control"%>
+                </div>
+                <div class="col-2 col-xl-2">
+                    <%= f.label :target_date_lteq, "目標日", class: "form-label" %>
+                    <br>
+                    <%= f.date_select :target_date_lteq, order: [:year, :month, :day], use_month_numbers: true, include_blank: true, class: "form-control"%>
+                </div>
+                <div class="col-2 d-flex align-items-end">
+                <%= button_tag(icon_with_text("search", "検索"), type: 'submit', class: "btn btn-primary me-1") %>
+                <%= link_to "リセット", goals_path, class: "btn btn-outline-secondary" %>
+                </div>
+            </div>
+        <% end %>
+    </div>
+</div>
+<div class="card shadow mt-3">
+  <div class="card-header">
+    <%= icon_with_text("table", "一覧") %>
+  </div>
+
+  <div class="card-body mx-3">
+    <div class="row py-2">
+      <div class="col-2 mt-auto">
+        <%= sort_link(@search, :book_id) %>
+      </div>
+      <div class="col-2 mt-auto">
+        <%= sort_link(@search, :start_date) %>
+      </div>
+      <div class="col-2 mt-auto">
+        <%= sort_link(@search, :target_date) %>
+      </div>
+      <div class="col-2 mt-auto">
+        <%= sort_link(@search, :pages_per_day) %>
+      </div>
+      <div class="col-2 mt-auto">
+        <%= sort_link(@search, :reading_pages) %>
+      </div>
+      <div class="col-2 d-flex justify-content-end">
+        <%= link_to icon_with_text("plus-circle", "登録"),
+                    new_goal_path,
+                    class: "btn btn-outline-primary"
+        %>
+      </div>
+    </div>
+
+    <%= render @goals %>
+
+    <div class="d-flex justify-content-end mt-3">
+      <%= paginate @goals %>
+    </div>
+  </div>
+</div>
