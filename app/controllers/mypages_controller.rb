@@ -4,6 +4,8 @@ class MypagesController < ApplicationController
     @goals = Goal
     .joins(:book)
     .where(status:"unachieved")
-    .select("books.title, start_date, target_date, pages_per_day, current_page")
+    #current_pageを入れる
+    #.select("books.title, start_date, target_date, pages_per_day, current_page")
+    .select("books.title, start_date, target_date, pages_per_day")
   end
 end

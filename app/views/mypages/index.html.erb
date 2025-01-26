@@ -39,7 +39,7 @@
         <td><%= goal.start_date %></td>
         <td><%= goal.target_date %></td>
         <td><%= goal.pages_per_day %></td>
-        <td><%= goal.current_page %>/ <%= book.pages %><br><%= @progress %> %</td>
+        <%# *を%に変える <td>"<*= goal.current_page *>/ <*= book.pages *><br><*= @progress *> %"</td>%>
       </tr>
     <% end %>
   </tbody>
