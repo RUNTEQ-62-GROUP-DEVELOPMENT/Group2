@@ -1,0 +1,43 @@
+<h1>読書目標</h1>
+ <%# ransackを利用した検索フォームでは、form_withの代わりにsearch_form_forを使う %>
+   <%= search_form_for @search do |f| %>
+    <%# `カラム名_cont`とすることで、カラムに対してLIKEを使った曖昧一致検索ができる %>
+    <%= f.label :book_title_cont, "タイトル" %>
+    <%= f.search_field :book_title_cont %>
+ 
+    <%# `カラム名_eq`とすることで、カラムに対して完全一致検索ができる %>
+    <%= f.label :start_date_gteq, "読書開始日" %>
+    <%= f.date_field :start_date_gteq %>
+
+    <%= f.label :target_date_lteq, "読了目標日" %>
+    <%= f.date_field :target_date_lteq %>
+
+    <%= f.label :status_eq, "達成状況" %>
+    <%= f.search_field :status_eq %>
+
+    <%= f.submit "検索" %>
+
+    <%# 検索結果と検索フォームをクリアする %>
+    <%= link_to "リセット", goals_path %>
+   <% end %>
+
+    <%# ソートのリンク。このリンクをクリックするとbook_title属性でソートされる %>
+    <%= sort_link(@search, :book_title) %>
+    <%# ソートのリンク。このリンクをクリックするstart_date属性でソートされる %>
+    <%= sort_link(@search, :start_date) %>
+    <%# ソートのリンク。このリンクをクリックするtarget_date属性でソートされる %>
+    <%= sort_link(@search, :target_date) %>
+    <%# ソートのリンク。このリンクをクリックするstatus属性でソートされる %>
+    <%= sort_link(@search, :status) %>
+    
+
+<% @goals.each do |goal| %>
+<div>
+  <h3><%= goal.book.title %></h3>
+  <p>開始日: <%= goal.start_date %></p>
+  <p>目標日: <%= goal.target_date %></p>
+  <p>1日ページ数: <%=goal.pages_per_day %></p>
+</div>
+<% end %>
+<%# ページネーションを表示する %>
+<%= paginate @goals %>
