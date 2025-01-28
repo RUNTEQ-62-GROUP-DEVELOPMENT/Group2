@@ -1,0 +1,66 @@
+<h2 class="fw-bold">
+  <span class="me-1">My本棚</span>
+</h2>
+
+<!-- 検索フォーム -->
+<div class="card shadow mt-3">
+  <div class="card-header">
+    検索
+  </div>
+  <div class="card-body">
+    <%= search_form_for @q, html: { data: { turbo_frame: "books-list" } } do |f| %>
+      <div class="row g3 mb-3 justify-content-center">
+        <div class="col-3 col-xl-2">
+          <%= f.search_field :title_cont, class: 'form-control', placeholder: "タイトル" %>
+        </div>
+        <div class="col-3 col-xl-2">
+          <%= f.search_field :author_cont, class: 'form-control', placeholder: "著者" %>
+        </div>
+        <div class="col-3 col-xl-2">
+          <%= f.search_field :status_eq, class: 'form-control', placeholder: "ステータス" %>
+        </div>
+        <div class="col-3 col-xl-2">
+        <div class="input-group-append">
+          <%= f.submit class: 'btn btn-primary' %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<!-- 一覧 -->
+<div class="card shadow mt-3">
+  <div class="card-header">
+    <%= icon_with_text("table", "一覧") %>
+  </div>
+  <div class="card-body mx-3">
+  <%= turbo_frame_tag "books-list" do %>
+    <div class="row py-2 justify-content-center">
+      <div class="col-2 mt-auto">
+        <%= sort_link(@q, :title) %>
+      </div>
+      <div class="col-2 mt-auto">
+        <%= sort_link(@q, :author) %>
+      </div>
+      <div class="col-2 mt-auto">
+        <%= sort_link(@q, :pages) %>
+      </div>
+      <div class="col-2 mt-auto">
+        <%= sort_link(@q, :status) %>
+      </div>
+      <div class="col-2 d-flex justify-content-end">
+        <%= link_to icon_with_text("plus-circle", "登録"),
+                    new_book_path,
+                    class: "btn btn-outline-primary"
+        %>
+      </div>
+    </div>
+
+    <%= render @books %>
+
+    <div class="center d-flex justify-content-center">
+      <%= paginate @books, theme: 'bootstrap-5' %>
+    </div>
+    <% end %>
+  </div>
+</div>

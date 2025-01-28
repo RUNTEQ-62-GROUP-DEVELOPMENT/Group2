@@ -1,3 +1,4 @@
+=begin
 # らんてくん用のデータ作成
 runt = User.create!(name: 'らんてくん',
               email: 'test@example.com',
@@ -62,4 +63,17 @@ end
                       pages_per_day: temp_pages_per_day,
                       reading_pages: rand(0...book.pages),
                       status: 0)
+end
+
+=end
+
+require 'faker'
+
+30.times do
+  User.find(1).books.create(
+    title: Faker::Book.title,
+    author: Faker::Book.author,
+    pages: rand(100..500), # 100ページから500ページの間でランダム
+    status: [0,1,2,3].sample # ランダムに選択
+  )
 end

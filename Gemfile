@@ -53,6 +53,8 @@ gem "ransack"
 gem "bootstrap_form"
 gem "sorcery", '0.16.3'
 gem 'oauth2', '~> 1.0'
+gem 'faker'
+gem 'bootstrap5-kaminari-views'
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"

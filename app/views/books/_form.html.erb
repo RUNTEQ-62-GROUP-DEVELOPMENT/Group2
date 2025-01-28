@@ -1,0 +1,25 @@
+<%= turbo_frame_tag book do %>
+  <%= bootstrap_form_with(model: book) do |form| %>
+    <div class="row py-2 border-top">
+      <div class="col-2">
+        <%= form.text_field :title, skip_label: true, label_as_placeholder: true, wrapper: false, control_class: "form-control form-control-sm" %>
+      </div>
+      <div class="col-2">
+        <%= form.text_field :author, skip_label: true, label_as_placeholder: true, wrapper: false, control_class: "form-control form-control-sm" %>
+      </div>
+      <div class="col-2">
+        <%= form.number_field :pages, skip_label: true, label_as_placeholder: true, wrapper: false, control_class: "form-control form-control-sm" %>
+      </div>
+      <div class="col-2">
+        <%= form.text_field :status, skip_label: true, label_as_placeholder: true, wrapper: false, control_class: "form-control form-control-sm" %>
+      </div>
+
+      <div class="col-3">
+        <div class="d-flex justify-content-end">
+          <%= form.primary class: "btn btn-primary btn-sm me-2" %>
+          <%= link_to "キャンセル", book, class: "btn btn-sm btn-outline-secondary" %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+<% end %>
