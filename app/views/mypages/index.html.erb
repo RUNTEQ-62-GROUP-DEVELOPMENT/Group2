@@ -35,11 +35,11 @@
   <tbody>
     <% @goals.each do |goal| %>
       <tr>
-        <td><%= goal.title %></td>
+        <td><%= goal.book.title %></td>
         <td><%= goal.start_date %></td>
         <td><%= goal.target_date %></td>
         <td><%= goal.pages_per_day %></td>
-        <%# *を%に変える <td>"<*= goal.current_page *>/ <*= book.pages *><br><*= @progress *> %"</td>%>
+        <td><%= goal.reading_pages %> / <%= goal.book.pages %><br><%= ((goal.reading_pages.to_f / goal.book.pages)*100).floor %>%</td>
       </tr>
     <% end %>
   </tbody>
