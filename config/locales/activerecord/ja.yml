@@ -1,38 +1,8 @@
 ja:
   activerecord:
     models:
-      user: ユーザー
-      book: 本
-      goal: 読書目標
+      cat: ねこ
     attributes:
-      user:
+      cat:
         name: 名前
-        email: メールアドレス
-        password: パスワード
-        password_confirmation: パスワード確認
-      book:
-        title: タイトル
-        author: 著者
-        pages: 総ページ数
-        status: ステータス
-      goal:
-        start_date: 読書開始日
-        target_date: 読了目標日
-        pages_per_day: 目標ページ
-        reading_pages: 現在のページ
-        status: 達成状況
-  attributes:
-    id: ID
-    created_at: 作成日時
-    updated_at: 更新日時
-  enums:
-    book:
-      status:
-        purchase: 購入予定
-        possession: 所持
-        reading: 読書中
-        finished: 読了
-    goal:
-      status:
-        unachieved: 未達成
-        achievement: 達成
+        age: 年齢

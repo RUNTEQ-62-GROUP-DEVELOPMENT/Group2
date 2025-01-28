@@ -1,65 +1,105 @@
-# らんてくん用のデータ作成
-runt = User.create!(name: 'らんてくん',
-              email: 'test@example.com',
-              password: 'password',
-              password_confirmation: 'password')
-runt_id = runt.id
-
-## Bookデータ作成
-runt_book_number = 20
-runt_book_number.times do |index|
-  rand_pages = rand(100..999)
-  rand_status = rand(0..3)
-  runt.books.create!(title: Faker::Book.title,
-                      author: Faker::Book.author,
-                      pages: rand_pages,
-                      status: rand_status)
-end
-## Goalデータ作成
-10.times do |index|
-  book = Book.find(rand(1..runt_book_number))
-  temp_start_date = Date.today + rand(0..10)
-  temp_target_date = temp_start_date + rand(1..31)
-  diff_days = (temp_target_date - temp_start_date).to_i
-  temp_pages_per_day = (book.pages.to_f / diff_days).ceil
-  runt.goals.create!(book_id: book.id,
-                      start_date: temp_start_date,
-                      target_date: temp_target_date,
-                      pages_per_day: temp_pages_per_day,
-                      reading_pages: rand(0...book.pages),
-                      status: 0)
-end
-
-
-
-# ロボらんてくん用のデータ作成
-robo_runt = User.create!(name: 'ロボらんてくん',
-              email: 'sample@example.com',
-              password: 'password',
-              password_confirmation: 'password')
-robo_runt_id = robo_runt.id
-
-## Bookデータ作成
-robo_runt_book_number = 10
-robo_runt_book_number.times do |index|
-  rand_pages = rand(100..999)
-  rand_status = rand(0..3)
-  robo_runt.books.create!(title: Faker::Book.title,
-                      author: Faker::Book.author,
-                      pages: rand_pages,
-                      status: rand_status)
-end
-## Goalデータ作成
-5.times do |index|
-  book = Book.find(rand(1..robo_runt_book_number))
-  temp_start_date = Date.today + rand(0..10)
-  temp_target_date = temp_start_date + rand(1..31)
-  diff_days = (temp_target_date - temp_start_date).to_i
-  temp_pages_per_day = (book.pages.to_f / diff_days).ceil
-  robo_runt.goals.create!(book_id: book.id,
-                      start_date: temp_start_date,
-                      target_date: temp_target_date,
-                      pages_per_day: temp_pages_per_day,
-                      reading_pages: rand(0...book.pages),
-                      status: 0)
-end
+# 参考: https://nekorich.com/cat-names
+Cat.create(
+  [
+    {name: "アーチー", age: 0 },
+    {name: "アーロ", age: 1 },
+    {name: "アイヴァン", age: 2 },
+    {name: "アイリス", age: 3 },
+    {name: "アヴァロン", age: 4 },
+    {name: "アクセル", age: 5 },
+    {name: "あずき", age: 6 },
+    {name: "アディ", age: 7 },
+    {name: "アディソン", age: 8 },
+    {name: "アニー", age: 9 },
+    {name: "アビー", age: 10 },
+    {name: "アポロ", age: 11 },
+    {name: "アリエル", age: 12 },
+    {name: "アリス", age: 13 },
+    {name: "アルド", age: 14 },
+    {name: "アルフィ", age: 15 },
+    {name: "アレックス", age: 16 },
+    {name: "アンバー", age: 17 },
+    {name: "イザベラ", age: 18 },
+    {name: "イジィ", age: 19 },
+    {name: "ウィスカー", age: 0 },
+    {name: "ウィリアム", age: 1 },
+    {name: "ウィロー", age: 2 },
+    {name: "うに", age: 3 },
+    {name: "エイヴァ", age: 4 },
+    {name: "エヴァ", age: 5 },
+    {name: "エコー", age: 6 },
+    {name: "エディ", age: 7 },
+    {name: "エマ", age: 8 },
+    {name: "エラ", age: 9 },
+    {name: "エリー", age: 10 },
+    {name: "エルサ", age: 11 },
+    {name: "エルビス", age: 12 },
+    {name: "エンジェル", age: 13 },
+    {name: "オータム", age: 14 },
+    {name: "オーティス", age: 15 },
+    {name: "オーディン", age: 16 },
+    {name: "オードリー", age: 17 },
+    {name: "おくら", age: 18 },
+    {name: "オジー", age: 19 },
+    {name: "オスカー", age: 0 },
+    {name: "おもち", age: 1 },
+    {name: "オリィ", age: 2 },
+    {name: "オリオン", age: 3 },
+    {name: "オリバー", age: 4 },
+    {name: "オリビア", age: 5 },
+    {name: "オレオ", age: 6 },
+    {name: "ガーフィールド", age: 7 },
+    {name: "かい", age: 8 },
+    {name: "カエサル", age: 9 },
+    {name: "ガナー", age: 10 },
+    {name: "カリー", age: 11 },
+    {name: "キキ", age: 12 },
+    {name: "ギズモ", age: 13 },
+    {name: "キティ", age: 14 },
+    {name: "きなこ", age: 15 },
+    {name: "キャスパー", age: 16 },
+    {name: "キャンディ", age: 17 },
+    {name: "ぎんじ", age: 18 },
+    {name: "クイナ", age: 19 },
+    {name: "くう", age: 0 },
+    {name: "グース", age: 1 },
+    {name: "クーパー", age: 2 },
+    {name: "クッキー", age: 3 },
+    {name: "クラッシュ", age: 4 },
+    {name: "グリフィン", age: 5 },
+    {name: "グレイシー", age: 6 },
+    {name: "グレース", age: 7 },
+    {name: "クレオ", age: 8 },
+    {name: "くろ", age: 9 },
+    {name: "クロエ", age: 10 },
+    {name: "ケイシー", age: 11 },
+    {name: "ケイティ", age: 12 },
+    {name: "ケティ", age: 13 },
+    {name: "ここ", age: 14 },
+    {name: "コスモ", age: 15 },
+    {name: "こたろう", age: 16 },
+    {name: "こてつ", age: 17 },
+    {name: "コナ", age: 18 },
+    {name: "ゴンゾ", age: 19 },
+    {name: "サーシャ", age: 0 },
+    {name: "さくら", age: 1 },
+    {name: "サシー", age: 2 },
+    {name: "サディ", age: 3 },
+    {name: "サミー", age: 4 },
+    {name: "サム", age: 5 },
+    {name: "サレム", age: 6 },
+    {name: "シーダ", age: 7 },
+    {name: "ジェイク", age: 8 },
+    {name: "シェビー", age: 9 },
+    {name: "ジギー", age: 10 },
+    {name: "じじ", age: 11 },
+    {name: "ししまる", age: 12 },
+    {name: "シナモン", age: 13 },
+    {name: "シバ", age: 14 },
+    {name: "ジプシー", age: 15 },
+    {name: "ジャスティス", age: 16 },
+    {name: "ジャスパー", age: 17 },
+    {name: "ジャスミン", age: 18 },
+    {name: "ジャック", age: 19 },
+  ]
+)

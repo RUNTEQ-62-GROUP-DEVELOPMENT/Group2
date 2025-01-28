@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2025_01_19_063035) do
+ActiveRecord::Schema[7.0].define(version: 2025_01_22_224115) do
   create_table "books", charset: "utf8mb4", force: :cascade do |t|
     t.string "title", null: false
     t.string "author", null: false
@@ -20,6 +20,27 @@ ActiveRecord::Schema[7.0].define(version: 2025_01_19_063035) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_books_on_user_id"
+  end
+
+  create_table "cats", charset: "utf8mb4", force: :cascade do |t|
+    t.string "name"
+    t.integer "age"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "chicks", charset: "utf8mb4", force: :cascade do |t|
+    t.string "name"
+    t.integer "age"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "dogs", charset: "utf8mb4", force: :cascade do |t|
+    t.string "name"
+    t.integer "age"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "goals", charset: "utf8mb4", force: :cascade do |t|
@@ -34,6 +55,20 @@ ActiveRecord::Schema[7.0].define(version: 2025_01_19_063035) do
     t.datetime "updated_at", null: false
     t.index ["book_id"], name: "index_goals_on_book_id"
     t.index ["user_id"], name: "index_goals_on_user_id"
+  end
+
+  create_table "hedgehogs", charset: "utf8mb4", force: :cascade do |t|
+    t.string "name"
+    t.integer "age"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "owls", charset: "utf8mb4", force: :cascade do |t|
+    t.string "name"
+    t.integer "age"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", charset: "utf8mb4", force: :cascade do |t|

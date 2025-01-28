@@ -6,7 +6,7 @@ services:
       TZ: Asia/Tokyo
       MYSQL_ROOT_PASSWORD: password
     volumes:
-      - mysql_data:/var/lib/mysql
+      - mysql_data_practice:/var/lib/mysql
     ports:
       - 13307:13306
   web:
@@ -32,6 +32,6 @@ services:
     ports:
       - 4445:4445
 volumes:
-  mysql_data:
+  mysql_data_practice:
   bundle_data:
   node_modules:
