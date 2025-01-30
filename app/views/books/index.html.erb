@@ -17,11 +17,11 @@
           <%= f.search_field :author_cont, class: 'form-control', placeholder: "著者" %>
         </div>
         <div class="col-3 col-xl-2">
-          <%= f.search_field :status_eq, class: 'form-control', placeholder: "ステータス" %>
+          <%= f.select :status_eq, Book.statuses_i18n.invert.map{|key, value| [key, Book.statuses[value]]}, { include_blank: "指定なし" }, { class: 'form-control' } %>
         </div>
-        <div class="col-3 col-xl-2">
-        <div class="input-group-append">
-          <%= f.submit class: 'btn btn-primary' %>
+        <div class="col-3 d-flex align-items-end">
+          <%= button_tag(icon_with_text("search", "検索"), class: "btn btn-primary me-1") %>
+          <%= link_to "リセット", books_path, class: "btn btn-outline-secondary" %>
         </div>
       </div>
     <% end %>
@@ -51,12 +51,17 @@
       <div class="col-2 d-flex justify-content-end">
         <%= link_to icon_with_text("plus-circle", "登録"),
                     new_book_path,
-                    class: "btn btn-outline-primary"
+                    class: "btn btn-outline-primary",
+                    data: { turbo_frame: dom_id(Book.new) }
         %>
       </div>
     </div>
 
-    <%= render @books %>
+    <%= turbo_frame_tag Book.new %>
+
+    <div id="books">
+      <%= render @books %>
+    </div>
 
     <div class="center d-flex justify-content-center">
       <%= paginate @books, theme: 'bootstrap-5' %>

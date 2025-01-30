@@ -10,12 +10,12 @@
       <%= book.pages %>
     </div>
     <div class="col-2 my-auto">
-      <%= book.status %>
+      <%= book.status_i18n %>
     </div>
     <div class="col-2">
       <div class="d-flex justify-content-end">
         <%= link_to "編集", edit_book_path(book), class: "btn btn-sm btn-outline-primary me-2" %>
-        <%= link_to "削除", book_path(book), data: { turbo_method: :delete, turbo_confirm: "削除しますか?" }, class: "btn btn-sm btn-outline-danger" %>
+        <%= link_to "削除", book, class: "btn btn-sm btn-outline-danger", data: { turbo_method: :delete, turbo_confirm: "本当に削除しますか？" } %>
       </div>
     </div>
   </div>

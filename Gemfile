@@ -55,6 +55,7 @@ gem "sorcery", '0.16.3'
 gem 'oauth2', '~> 1.0'
 gem 'faker'
 gem 'bootstrap5-kaminari-views'
+gem 'enum_help', '0.0.19'
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
@@ -64,7 +65,6 @@ group :development, :test do
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
   gem "pry-byebug"
   gem "rubocop"
-  gem "faker"
 end
 
 group :development do

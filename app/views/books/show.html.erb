@@ -3,8 +3,8 @@
 <%= render @book %>
 
 <div>
-  <%= link_to "編集", edit_book_path(@book) %> |
-  <%= link_to "一覧へ戻る", books_path %>
+  <%= link_to "Edit this cat", edit_book_path(@book) %> |
+  <%= link_to "Back to cats", books_path %>
 
-  <%= button_to "削除", @book, method: :delete %>
+  <%= button_to "Destroy this cat", @book, method: :delete %>
 </div>

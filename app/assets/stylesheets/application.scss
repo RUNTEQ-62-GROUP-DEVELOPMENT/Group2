@@ -53,3 +53,7 @@ header #app-title {
   margin-bottom: 30px;
   text-align: center;
 }
+
+.no-label-form label {
+  display: none !important;
+}
