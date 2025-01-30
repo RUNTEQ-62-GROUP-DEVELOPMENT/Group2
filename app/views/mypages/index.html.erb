@@ -39,7 +39,7 @@
         <td><%= goal.start_date %></td>
         <td><%= goal.target_date %></td>
         <td><%= goal.pages_per_day %></td>
-        <td><%= goal.reading_pages %> / <%= goal.book.pages %><br><%= ((goal.reading_pages.to_f / goal.book.pages)*100).floor %>%</td>
+        <td><%= ((goal.reading_pages.to_f / goal.book.pages)*100).floor %>%<br><%= goal.reading_pages %> / <%= goal.book.pages %></td>
       </tr>
     <% end %>
   </tbody>
