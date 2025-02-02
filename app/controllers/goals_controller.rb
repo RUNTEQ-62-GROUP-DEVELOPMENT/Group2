@@ -2,8 +2,8 @@ class GoalsController < ApplicationController
   before_action :set_goal, only: %i[show edit update destroy]
 
   def index
-    @search = Goal.includes(:book).ransack(params[:q] || {})
     apply_date_filters
+    @search = Goal.includes(:book).ransack(params[:q] || {})
     @goals = @search.result(distinct: true).page(params[:page])
     @books = Book.all
   end
@@ -55,19 +55,17 @@ class GoalsController < ApplicationController
   end
 
   def apply_date_filters
-    @search = Goal.ransack(params[:q])
-
-    if params.dig(:q, :start_date_gteq).present? && params.dig(:q, :target_date_lteq).blank?
-      @search = @search.ransack(start_date_gteq: params.dig(:q, :start_date_gteq))
+    # params[:q] がなければ初期化
+    params[:q] ||= {}
+  
+    # 日付フィルタの追加
+    if params.dig(:q, :start_date_gteq).present?
+      params[:q][:start_date_gteq] = Date.parse(params[:q][:start_date_gteq]) rescue nil
     end
-
-    if params.dig(:q, :start_date_gteq).blank? && params.dig(:q, :target_date_lteq).present?
-      @search = @search.ransack(target_date_lteq: params.dig(:q, :target_date_lteq))
+  
+    if params.dig(:q, :target_date_lteq).present?
+      params[:q][:target_date_lteq] = Date.parse(params[:q][:target_date_lteq]) rescue nil
     end
-
-    return unless params.dig(:q, :start_date_gteq).present? && params.dig(:q, :target_date_lteq).present?
-
-    @search = @search.ransack(start_date_gteq: params.dig(:q, :start_date_gteq),
-                              target_date_lteq: params.dig(:q, :target_date_lteq))
   end
+  
 end
