@@ -1,19 +1,25 @@
-<h1 class="title1">読書アプリ</h1>
-<div>
-  <h2 class="title2">My本棚</h2>
-  <p>
-    持っている本や欲しい本を登録して<br />
-    管理することができます！
-  </p>
-</div>
-<div>
-  <h2 class="title2">読書目標</h2>
-  <p>
-    読書目標を設定することができます。
-  </p>
-</div>
-  <%= link_to 'ログイン', login_path %>
-<div>
-</div>
-  <%= link_to '初めての方はこちら', new_user_path %>
-<div>
+<% content_for(:title, t('.page_title')) %>
+<%= stylesheet_link_tag 'tops', media: 'all', "data-turbo-track": "reload" %>
+
+<main>
+  <h1 class="title">読書アプリ</h1>
+  <div class="describe">
+    <h2 class="title mybook">My本棚</h2>
+    <p class="contents">
+      持っている本や欲しい本を登録して<br />
+      管理することができます！
+    </p>
+  </div>
+  <div class="describe">
+    <h2 class="title goal">読書目標</h2>
+    <p class="contents">
+      読書目標を設定することができます。
+    </p>
+  </div>
+  <div class="link-block">
+    <%= link_to 'ログイン', login_path %>
+  </div>
+  <div class="link-block">
+    <%= link_to '初めての方はこちら', new_user_path %>
+  </div>
+</main>
