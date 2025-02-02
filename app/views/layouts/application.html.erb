@@ -19,5 +19,8 @@
       <%= render 'shared/flash_message' %>
       <%= yield %>
     <% end %>
+
+    <%= turbo_frame_tag "modal" %>
+    <div id="flashes" class="position-fixed top-0 end-0" style="margin: 0.75rem"></div>
   </body>
 </html>

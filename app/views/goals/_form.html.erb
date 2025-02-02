@@ -1,0 +1,49 @@
+<%= turbo_frame_tag goal do %>
+  <%= bootstrap_form_with(model: goal) do |form| %>
+    <div class="row py-2 border-top">
+      <div class="col-4">
+          <%= form.text_field :,
+                            skip_label: true,
+                            label_as_placeholder: true,
+                            wrapper: false,
+                            control_class: "form-control form-control-sm"
+          %>
+      </div>
+      <div class="col-4">
+        <%= form.number_field :start_date,
+                              skip_label: true,
+                              label_as_placeholder: true,
+                              wrapper: false,
+                              control_class: "form-control form-control-sm"
+        %>
+      </div>
+      <div class="col-4">
+        <%= form.text_field :target_date,
+                            skip_label: true,
+                            label_as_placeholder: true,
+                            wrapper: false,
+                            control_class: "form-control form-control-sm"
+        %>
+      </div>
+      <div class="col-4">
+        <%= form.text_field :pages_per_day,
+                            skip_label: true,
+                            label_as_placeholder: true,
+                            wrapper: false,
+                            control_class: "form-control form-control-sm"
+        %>
+      </div>
+      <div class="col-4">
+        <div class="d-flex justify-content-end">
+          <%= form.primary class: "btn btn-primary btn-sm me-2" %>
+          <%= link_to "キャンセル", goal, class: "btn btn-sm btn-outline-secondary" %>
+        </div>
+      </div>
+    </div>
+     <!-- <%= form.text_field :book_title %>
+     <%= form.date_field :start_date %>
+     <%= form.date_field :target_date %>
+     <%= form.text_field :pages_per_day %>
+     <%= form.primary %> -->
+  <% end %>
+<% end %>

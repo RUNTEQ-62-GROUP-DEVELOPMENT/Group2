@@ -1,5 +1,88 @@
-<h1>読書目標</h1>
- <%# ransackを利用した検索フォームでは、form_withの代わりにsearch_form_forを使う %>
+<!-- 見出し -->
+<h4 class="fw-bold">
+  <span class="me-1">読書目標</span>
+  <span>📚</span>
+</h4>
+<!-- 検索フォーム -->
+<div class="card shadow mt-3">
+  <div class="card-header">
+    <%= icon_with_text("search", "検索条件") %>
+  </div>
+
+  <div class="card-body">
+    <%= search_form_for @search, html: { data: { turbo_frame: "goals-list" } } do |f| %>
+      <div class="row g3 mb-3">
+        <div class="col-4 col-xl-2">
+          <%= f.label :book_title_cont, "タイトル", class: "form-label" %>
+          <%= f.search_field :book_title_cont, class: "form-control" %>
+        </div>
+        <div class="col-4 col-xl-2">
+          <%= f.label :start_date_gteq, "読書開始日", class: "form-label" %>
+          <%= f.date_field :start_date_gteq, class: "form-control" %>
+        </div>
+        <div class="col-4 col-xl-2">
+          <%= f.label :target_date_lteq, "読了目標日", class: "form-label" %>
+          <%= f.date_field :target_date_lteq, class: "form-control" %>
+        </div>
+        <div class="col-4 col-xl-2">
+          <%= f.label :status_eq, "達成状況" %>
+          <%= f.search_field :status_eq %>
+        </div>
+        <div class="col-4 d-flex align-items-end">
+          <%= button_tag(icon_with_text("search", "検索"), class: "btn btn-primary me-1") %>
+          <%= link_to "リセット", goals_path, class: "btn btn-outline-secondary" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+  <!-- 一覧 -->
+<div class="card shadow mt-3">
+  <div class="card-header">
+    <%= icon_with_text("table", "一覧") %>
+  </div>
+
+  <div class="card-body mx-3">
+    <%= turbo_frame_tag "goals-list" do %>
+      <div class="row py-2">
+        <div class="col-1 mt-auto">
+          <%= sort_link(@search, :book_title) %>
+        </div>
+        <div class="col-1 mt-auto">
+          <%= sort_link(@search, :start_date) %>
+        </div>
+        <div class="col-1 mt-auto">
+          <%= sort_link(@search, :target_date) %>
+        </div>
+        <div class="col-1 mt-auto">
+          <%= sort_link(@search, :status) %>
+        </div>
+        <div class="col-4 d-flex justify-content-end">
+          <%= link_to icon_with_text("plus-circle", "登録"),
+                      new_goal_path,
+                      class: "btn btn-outline-primary",
+                      data: { turbo_frame: dom_id(Goal.new) }
+          %>
+        </div>
+      </div>
+
+      <%= turbo_frame_tag Goal.new %>
+
+      <div id="goals">
+        <%= render @goals %>
+      </div>
+
+      <div class="d-flex justify-content-end mt-3">
+        <%= paginate @goals %>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+ 
+ 
+ <!--- <%# ransackを利用した検索フォームでは、form_withの代わりにsearch_form_forを使う %>
    <%= search_form_for @search do |f| %>
     <%# `カラム名_cont`とすることで、カラムに対してLIKEを使った曖昧一致検索ができる %>
     <%= f.label :book_title_cont, "タイトル" %>
@@ -11,15 +94,19 @@
 
     <%= f.label :target_date_lteq, "読了目標日" %>
     <%= f.date_field :target_date_lteq %>
+    <div class="row py-2 border-top">
+      <div class="col-4 my-auto">
 
     <%= f.label :status_eq, "達成状況" %>
     <%= f.search_field :status_eq %>
 
     <%= f.submit "検索" %>
+    <div class="row py-2 border-top">
+    </div>
 
     <%# 検索結果と検索フォームをクリアする %>
-    <%= link_to "リセット", goals_path %>
-   <% end %>
+    <%= link_to "リセット", goals_path %>  
+    <% end %>
 
     <%# ソートのリンク。このリンクをクリックするとbook_title属性でソートされる %>
     <%= sort_link(@search, :book_title) %>
@@ -38,6 +125,4 @@
   <p>目標日: <%= goal.target_date %></p>
   <p>1日ページ数: <%=goal.pages_per_day %></p>
 </div>
-<% end %>
-<%# ページネーションを表示する %>
-<%= paginate @goals %>
+<% end %> -->
