@@ -17,8 +17,11 @@ class GoalsController < ApplicationController
    @goals = @search.result.page(params[:page])
   end
 
+  def show
+  end
+
   def new
-    @goal = Goal.new
+   @goal = Goal.new
   end
 
   def edit
@@ -26,6 +29,13 @@ class GoalsController < ApplicationController
 
   def create
     @goal = current_user.goals.build(goal_params)
+    book = current_user.books.find_by(title: params[:goal][:book_title])
+    if book.nil?
+      @goal.errors.add(book_title, "入力されたタイトルは本棚に存在しません")
+      return render :new, status: :unprocessable_entity
+    end
+
+    @goal = current_user.goals.build(goal_params.merge(book_id: book.id, status: :unachieved))
     if @goal.save
       flash.now.notice = "目標を登録しました。"
     else
@@ -34,6 +44,7 @@ class GoalsController < ApplicationController
   end
 
   def update
+    binding.pry
     if @goal.update(goal_params)
       flash.now.notice = "進捗を更新しました。"
     else
@@ -54,6 +65,6 @@ class GoalsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def goal_params
-      params.require(:goal).permit(:book_title, :start_date, :target_date, :pages_per_day)
+      params.require(:goal).permit(:start_date, :target_date, :reading_pages, :pages_per_day)
     end
 end

@@ -1,8 +1,8 @@
 <%= turbo_frame_tag goal do %>
   <%= bootstrap_form_with(model: goal) do |form| %>
-    <div class="row py-2 border-top">
+    <div class="row py-2 border-top">      
       <div class="col-4">
-          <%= form.text_field :,
+          <%= form.text_field :book_title,
                             skip_label: true,
                             label_as_placeholder: true,
                             wrapper: false,
@@ -10,7 +10,7 @@
           %>
       </div>
       <div class="col-4">
-        <%= form.number_field :start_date,
+        <%= form.date_field :start_date,
                               skip_label: true,
                               label_as_placeholder: true,
                               wrapper: false,
@@ -18,7 +18,7 @@
         %>
       </div>
       <div class="col-4">
-        <%= form.text_field :target_date,
+        <%= form.date_field :target_date,
                             skip_label: true,
                             label_as_placeholder: true,
                             wrapper: false,
@@ -26,7 +26,15 @@
         %>
       </div>
       <div class="col-4">
-        <%= form.text_field :pages_per_day,
+        <%= form.number_field :pages_per_day,
+                            skip_label: true,
+                            label_as_placeholder: true,
+                            wrapper: false,
+                            control_class: "form-control form-control-sm"
+        %>
+      </div>
+      <div class="col-4">
+        <%= form.number_field :reading_pages,
                             skip_label: true,
                             label_as_placeholder: true,
                             wrapper: false,

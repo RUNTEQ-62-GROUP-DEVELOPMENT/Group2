@@ -6,6 +6,8 @@ class Goal < ApplicationRecord
   # achievement: 達成
   enum status: { unachieved: 0, achievement: 1 }
 
+  attr_accessor :book_title
+
   def self.ransackable_associations(auth_object = nil)
     ["book", "user"]
   end
