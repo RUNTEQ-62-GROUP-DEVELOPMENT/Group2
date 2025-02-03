@@ -1,0 +1,24 @@
+.container{
+  padding: 0 20px;
+}
+
+h3.title {
+  border-bottom: 5px double hsl(15, 90%, 60%);
+  margin: 30px 0;
+  padding: 10px 0;
+}
+
+h4.title{
+  margin: 15px 0;
+  padding: 10px 0;
+}
+
+h4.reading {
+  border-bottom: 2px solid hsl(30, 90%, 60%);
+  width: 150px;
+}
+
+h4.goals-progress {
+  border-bottom: 2px solid hsl(120, 90%, 60%);
+  width: 170px;
+}
