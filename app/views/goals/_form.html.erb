@@ -1,30 +1,44 @@
-<%= form_with(model: goal) do |form| %>
-  <% if goal.errors.any? %>
-   <div style="color: red">
-     <h2><%= pluralize(goal.errors.count, "error") %> prohibited this goal from being saved:</h2>
+<%= turbo_frame_tag goal || "new_goal" do %>
+  <%= form_with(model: goal || Goal.new) do |form| %>
+    <% if goal&.errors.any? %>
+      <div style="color: red">
+        <h2><%= pluralize(goal.errors.count, "error") %> prohibited this goal from being saved:</h2>
+        <ul>
+          <% goal.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
 
-     <ul>
-       <% goal.errors.each do |error| %>
-         <li><%= error.full_message %></li>
-       <% end %>
-     </ul>
-   </div>
- <% end %>
- <div>
-  <%= form.label :book_id, "本のタイトル", style: "display: block" %>
-  <%= form.collection_select :book_id, Book.all, :id, :title, prompt: "本を選択してください", class: "form-control" %>
- </div>
- <div>
-   <%= form.label :start_date, style: "display: block" %>
-   <%= form.date_field :start_date %>
- </div>
+    <div class="row py-2 border-top">
+      <div class="col-2">
+        <%= form.collection_select :book_id, Book.order(created_at: :desc), :id, :title, 
+          { prompt: "本を選択" }, 
+          { class: "form-control form-control-sm" }
+        %>
+      </div>
+      <div class="col-2">
+        <%= form.date_field :start_date, class: "form-control form-control-sm" %>
+      </div>
+      <div class="col-2">
+        <%= form.date_field :target_date, class: "form-control form-control-sm" %>
+      </div>
+      <div class="col-1">
+        <%= form.number_field :pages_per_day, class: "form-control form-control-sm" %>
+      </div>
+      <div class="col-1">
+        <%= form.number_field :reading_pages, class: "form-control form-control-sm" %>
+      </div>
+      <div class="col-1">
+        <%= form.select :status, options_for_select([['未達成', 'unachieved'], ['達成', 'achievement']]), { prompt: '選択してください' }, class: "form-control" %>
+      </div>
 
- <div>
-   <%= form.label :target_date, style: "display: block" %>
-   <%= form.date_field :target_date %>
- </div>
-
- <div>
-   <%= form.submit %>
- </div>
+      <div class="col-2">
+        <div class="d-flex justify-content-end">
+          <%= form.submit "Save", class: "btn btn-primary btn-sm me-2" %>
+        </div>
+      </div>
+    </div>
+  <% end %>
 <% end %>
