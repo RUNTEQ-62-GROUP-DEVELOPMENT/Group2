@@ -11,7 +11,7 @@
         <%= form.number_field :pages, skip_label: true, label_as_placeholder: true, wrapper: false, control_class: "form-control form-control-sm" %>
       </div>
       <div class="col-2">
-        <%= form.select :status, Book.statuses_i18n.invert, {}, { class: 'form-control form-control-sm' } %>
+        <%= form.select :status, Book.statuses_i18n.invert, skip_label: true, label_as_placeholder: true, wrapper: false, control_class: "form-control form-control-sm" %>
       </div>
 
       <div class="col-2">

@@ -11,11 +11,9 @@ class BooksController < ApplicationController
   end
 
   def show
-    @book = current_user.books.find(params[:id])
   end
 
   def edit
-    @book = current_user.books.find(params[:id])
   end
 
   def create
@@ -29,7 +27,6 @@ class BooksController < ApplicationController
   end
 
   def update
-    @book = current_user.books.find(params[:id])
     if @book.update(book_params)
       flash.now[:success] = t('defaults.flash_message.updated', item: Book.model_name.human)
     else
@@ -38,7 +35,6 @@ class BooksController < ApplicationController
   end
 
   def destroy
-    @book = current_user.books.find(params[:id])
     @book.destroy
     flash.now[:success] = t('defaults.flash_message.deleted', item: Book.model_name.human)
   end

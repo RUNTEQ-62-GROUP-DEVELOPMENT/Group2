@@ -1,7 +1,7 @@
 class Book < ApplicationRecord
   validates :title, presence: true, length: { maximum: 255 }
   validates :author, presence: true, length: { maximum: 255 }
-  validates :pages, numericality: { only_integer: true }, allow_blank: true
+  validates :pages, presence: true, numericality: { only_integer: true, greater_than: 0 }
 
   has_many :goals, dependent: :destroy
   belongs_to :user
