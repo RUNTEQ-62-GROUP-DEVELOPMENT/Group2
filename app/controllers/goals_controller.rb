@@ -51,7 +51,7 @@ class GoalsController < ApplicationController
   end
 
   def goal_params
-    params.require(:goal).permit(:book_id, :pages_per_day, :reading_pages, :target_date, :start_date)
+    params.require(:goal).permit(:book_id, :pages_per_day, :reading_pages, :target_date, :start_date, :status)
   end
 
   def apply_date_filters

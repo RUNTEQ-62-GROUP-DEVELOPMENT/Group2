@@ -33,12 +33,15 @@
       <div class="col-1">
         <%= form.select :status, options_for_select([['未達成', 'unachieved'], ['達成', 'achievement']]), { prompt: '選択してください' }, class: "form-control" %>
       </div>
+      <div class="col-1">
+      </div>
 
       <div class="col-2">
         <div class="d-flex justify-content-end">
-          <%= form.submit "Save", class: "btn btn-primary btn-sm me-2" %>
+          <%= form.submit "Save", class: "btn btn-primary btn-sm w-50 me-2" %>
+          <%= link_to "キャンセル", goal_path(goal), data: { turbo_action: "replace" }, class: "btn btn-sm btn-outline-secondary w-50" %>
         </div>
-      </div>
+     </div>
     </div>
   <% end %>
 <% end %>
