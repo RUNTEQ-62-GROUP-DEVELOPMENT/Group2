@@ -15,8 +15,11 @@
     <div class="col-1">
       <%= goal.reading_pages %>
     </div>
-    <div class="col-2">
+    <div class="col-1">
       <%= goal.status %>
+    </div>
+    <div class="col-1">
+      <%= ((goal.reading_pages.to_f / goal.book.pages)*100).floor %>%<br><%= goal.reading_pages %> / <%= goal.book.pages %>
     </div>
     <div class="col-2">
       <div class="d-flex justify-content-end">

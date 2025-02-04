@@ -59,8 +59,11 @@
         <div class="col-1 mt-auto">
           <%= sort_link(@search, :reading_pages) %>
         </div>
-        <div class="col-2 mt-auto">
+        <div class="col-1 mt-auto">
           <%= sort_link(@search, :status_text, "達成状況") %>
+        </div>
+        <div class="col-1 mt-auto">
+          進捗
         </div>
         <div class="col-2 d-flex justify-content-end">
           <%= link_to icon_with_text("plus-circle", "登録"),
