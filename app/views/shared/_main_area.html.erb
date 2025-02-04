@@ -1,16 +1,28 @@
 <div id="wrapper">
   <aside id="side-menu">
     <nav id="navigation">
-      <ul id="navigation-menu">
-        <li><%= link_to 'マイページ', mypages_path %></li>
-        <li><%= link_to 'My本棚', nil %></li>
-        <li><%= link_to '読書目標', nil %></li>
-        <li><%= link_to 'アカウント設定', nil %></li>
+      <ul class="nav nav-pills flex-column mb-auto">
+        <li class="nav-item mx-3">
+          <%= sidebar_link_to(mypages_path, "🐧", "マイページ") %>
+        </li>
+        <li class="nav-item mx-3">
+          <%= sidebar_link_to(nil, "🐶", "My本棚") %>
+        </li>
+        <li class="nav-item mx-3">
+          <%= sidebar_link_to(nil, "🐱", "読書目標") %>
+        </li>
+        <li class="nav-item mx-3">
+          <%= sidebar_link_to(nil, "🐸", "アカウント設定") %>
+        </li>
       </ul>
     </nav>
   </aside>
   <main>
+    <%= tag.div("こんにちは、#{current_user.name} さん", class: 'text-end') %>
     <%= render 'shared/flash_message' %>
+    <div id="flash">
+      <%= render "flash" %>
+    </div>
     <%= yield %>
   </main>
 </div>
