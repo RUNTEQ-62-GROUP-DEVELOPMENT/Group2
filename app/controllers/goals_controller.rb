@@ -3,36 +3,39 @@ class GoalsController < ApplicationController
 
   def index
     apply_date_filters
-    @search = Goal.includes(:book).ransack(params[:q] || {})
+    @search = current_user.goals.includes(:book).ransack(params[:q] || {})
     @goals = @search.result(distinct: true).page(params[:page])
     @books = Book.all
   end
 
   def show
-    @goal = Goal.find(params[:id])
+    @goal = current_user.goals.find(params[:id])
     @book = @goal.book
   end
 
   def new
-    @goal = Goal.new
+    @goal = current_user.goals.build
   end
 
   def create
-    @goal = Goal.new(goal_params)
+    @goal = current_user.goals.build(goal_params)
+    Rails.logger.debug "Current user: #{current_user.inspect}"
+    Rails.logger.debug "Goal params: #{goal_params.inspect}"
+    Rails.logger.debug "Goal object: #{@goal.inspect}"
+
     if @goal.save
-      redirect_to goals_path, notice: '目標が登録されました。'
+      flash[:notice] = "目標を登録しました。"
     else
-      flash.now[:alert] = '登録に失敗しました。'
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
 
   def edit; end
 
   def update
-    @goal = Goal.find(params[:id])
+    @goal = current_user.goals.find(params[:id])
     if @goal.update(goal_params)
-      redirect_to goals_path, success: '目標を更新しました。'
+      flash.now.notice = "目標を更新しました。"
     else
       flash.now[:danger] = "更新に失敗しました。"
       render :edit, status: :unprocessable_entity
@@ -41,13 +44,13 @@ class GoalsController < ApplicationController
 
   def destroy
     @goal.destroy
-    redirect_to goals_url, success: '目標を削除しました。'
+    flash.now.notice = "目標を削除しました。"
   end
 
   private
 
   def set_goal
-    @goal = Goal.find(params[:id])
+    @goal = current_user.goals.find(params[:id])
   end
 
   def goal_params
