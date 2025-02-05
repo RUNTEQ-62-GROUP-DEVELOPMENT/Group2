@@ -1,0 +1,39 @@
+main {
+  margin: 0 auto;
+  width: 800px;
+  text-align: center;
+}
+
+h1.title {
+  border-bottom: 5px double hsl(15, 90%, 60%);
+  margin: 30px 0;
+  font-size: 64px;
+}
+
+h2.title {
+  border-radius: 20px;
+  padding: 25px 0;
+  color: white;
+  font-size: 40px;
+}
+
+h2.mybook {
+  background-color: hsl(30, 90%, 60%)
+}
+
+h2.goal {
+  background-color: hsl(120, 60%, 50%)
+}
+
+.describe {
+  margin: 50px;
+}
+
+p.contents {
+  margin-top: 20px;
+  font-size: 30px;
+}
+
+.link-block {
+  margin-bottom: 20px;
+}

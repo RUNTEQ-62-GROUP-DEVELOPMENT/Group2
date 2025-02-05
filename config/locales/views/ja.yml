@@ -46,14 +46,12 @@ ja:
   header:
     login: ログイン
     logout: ログアウト
-    board: 掲示板
-    board_index: 掲示板一覧
-    create_board: 掲示板作成
-    bookmark_index: ブックマーク一覧
-    profile: プロフィール
+  tops:
+    index:
+      page_title: 読書アプリ
   user_sessions:
     new:
-      title: ログイン
+      page_title: ログイン
       login: ログイン
       to_top_page: top画面へ
       password_forget: パスワードをお忘れの方はこちら
@@ -64,68 +62,20 @@ ja:
       success: ログアウトしました
   users:
     new:
+      page_title: アカウント作成
       title: アカウント作成
       to_top_page: top画面へ
     create:
-      success: ユーザー登録が完了しました
-      failure: ユーザー登録に失敗しました
-  boards:
-    new:
-      title: 掲示板作成
-    show:
-      title: 掲示板詳細
-    index:
-      title: 掲示板一覧
+      success: アカウント登録が完了しました
+      failure: アカウント登録に失敗しました
     edit:
-      title: 掲示板編集
-    bookmarks:
-      title: ブックマーク一覧
-      no_result: ブックマーク中の掲示板がありません。
-  bookmarks:
-    create:
-      success: ブックマークしました
-    destroy:
-      success: ブックマークを外しました
-  profiles:
-    show:
-      title: プロフィール
-    edit:
-      title: プロフィール編集
-  password_resets:
-    new:
-      title: パスワードリセット申請
-      submit: 送信
-    edit:
-      title: パスワードリセット
-    create:
-      success: パスワードリセット手順を送信しました
+      page_title: アカウント設定
+      title: アカウント設定
     update:
-      success: パスワードを変更しました
-  admin:
-    user_sessions:
-      new:
-        title: ログイン
-        login: ログイン
-      create:
-        success: ログインしました
-        failure: ログインに失敗しました
-      destroy:
-        success: ログアウトしました
-    dashboards:
-      index:
-        title: ダッシュボード
-    users:
-      index:
-        title: ユーザー一覧
-      edit:
-        title: ユーザー編集
-      show:
-        title: ユーザー詳細
-    boards:
-      index:
-        title: 掲示板一覧
-      edit:
-        title: 掲示板編集
-      show:
-        title: 掲示板詳細
-  
+      success: アカウント設定が完了しました
+      failure: アカウント設定に失敗しました
+    destroy:
+      success: アカウントを削除しました
+  mypages:
+    index:
+      page_title: マイページ
