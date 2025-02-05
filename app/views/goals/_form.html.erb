@@ -1,6 +1,7 @@
 <%= turbo_frame_tag goal do %>
   <%= bootstrap_form_with(model: goal) do |form| %>
-    <div class="row py-2 border-top">      
+    <div class="row py-2 border-top"> 
+    <% if action_name == 'new' || action_name == 'create' %>
       <div class="col-4">
           <%= form.text_field :book_title,
                             skip_label: true,
@@ -17,6 +18,19 @@
                               control_class: "form-control form-control-sm"
         %>
       </div>
+    <% else %>
+      <div class="col-3 my-auto">
+        <% if goal.book %>
+          <%= goal.book.title %>
+        <% else %>
+          <%= goal.book_title %>
+        <% end %>
+      </div>
+      <div class="col-1 my-auto">
+         <%= goal.start_date %>
+      </div>
+    <% end %>
+       
       <div class="col-4">
         <%= form.date_field :target_date,
                             skip_label: true,

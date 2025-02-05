@@ -31,7 +31,7 @@ class GoalsController < ApplicationController
     @goal = current_user.goals.build(goal_params)
     book = current_user.books.find_by(title: params[:goal][:book_title])
     if book.nil?
-      @goal.errors.add(book_title, "入力されたタイトルは本棚に存在しません")
+      @goal.errors.add(:book_title, "入力されたタイトルは本棚に存在しません")
       return render :new, status: :unprocessable_entity
     end
 
@@ -44,7 +44,6 @@ class GoalsController < ApplicationController
   end
 
   def update
-    binding.pry
     if @goal.update(goal_params)
       flash.now.notice = "進捗を更新しました。"
     else
