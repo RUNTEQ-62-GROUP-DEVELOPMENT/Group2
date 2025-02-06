@@ -1,0 +1,71 @@
+<h2 class="fw-bold">
+  <span class="me-1"><%= t('.title') %></span>
+</h2>
+
+<!-- 検索フォーム -->
+<div class="card shadow mt-3">
+  <div class="card-header">
+    <%= t('.search') %>
+  </div>
+  <div class="card-body">
+    <%= search_form_for @q, html: { data: { turbo_frame: "books-list" } } do |f| %>
+      <div class="row g3 mb-3 justify-content-center">
+        <div class="col-3 col-xl-2">
+          <%= f.search_field :title_cont, class: 'form-control', placeholder: t('.book_title') %>
+        </div>
+        <div class="col-3 col-xl-2">
+          <%= f.search_field :author_cont, class: 'form-control', placeholder: t('.author') %>
+        </div>
+        <div class="col-3 col-xl-2">
+          <%= f.select :status_eq, Book.statuses_i18n.invert.map{|key, value| [key, Book.statuses[value]]}, { include_blank: t('.book_status') }, { class: 'form-control' } %>
+        </div>
+        <div class="col-3 d-flex align-items-end">
+          <%= button_tag(icon_with_text("search", t('.search')), class: "btn btn-primary me-1") %>
+          <%= link_to t('.reset'), books_path, class: "btn btn-outline-secondary" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<!-- 一覧 -->
+<div class="card shadow mt-3">
+  <div class="card-header">
+    <%= icon_with_text("table", t('.list')) %>
+  </div>
+  <div class="card-body mx-3">
+  <%= turbo_frame_tag "books-list" do %>
+    <div class="row py-2">
+      <div class="col-3 mt-auto">
+        <%= sort_link(@q, :title) %>
+      </div>
+      <div class="col-3 mt-auto">
+        <%= sort_link(@q, :author) %>
+      </div>
+      <div class="col-2 mt-auto">
+        <%= sort_link(@q, :pages) %>
+      </div>
+      <div class="col-2 mt-auto">
+        <%= sort_link(@q, :status) %>
+      </div>
+      <div class="col-2 d-flex justify-content-end">
+        <%= link_to icon_with_text("plus-circle", "登録"),
+                    new_book_path,
+                    class: "btn btn-outline-primary",
+                    data: { turbo_frame: dom_id(Book.new) }
+        %>
+      </div>
+    </div>
+
+    <%= turbo_frame_tag Book.new %>
+
+    <div id="books">
+      <%= render @books %>
+    </div>
+
+    <div class="center d-flex justify-content-center">
+      <%= paginate @books, theme: 'bootstrap-5' %>
+    </div>
+    <% end %>
+  </div>
+</div>
