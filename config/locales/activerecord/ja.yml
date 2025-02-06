@@ -18,9 +18,9 @@ ja:
       goal:
         start_date: 読書開始日
         target_date: 読了目標日
-        pages_per_day: 目標ページ
+        pages_per_day: 目標ペース（ページ/日）
         reading_pages: 現在のページ
-        status: 達成状況
+        status: 進捗
   attributes:
     id: ID
     created_at: 作成日時

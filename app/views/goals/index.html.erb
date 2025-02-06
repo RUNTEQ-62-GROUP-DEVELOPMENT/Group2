@@ -12,11 +12,11 @@
   <div class="card-body">
     <%= search_form_for @search, html: { data: { turbo_frame: "goals-list" } } do |f| %>
       <div class="row g3 mb-3">
-        <div class="col-4 col-xl-2">
+        <div class="col-3 col-xl-2">
           <%= f.label :book_title_cont, "タイトル", class: "form-label" %>
           <%= f.search_field :book_title_cont, class: "form-control" %>
         </div>
-        <div class="col-4 col-xl-2">
+        <div class="col- col-xl-2">
           <%= f.label :start_date_gteq, "読書開始日", class: "form-label" %>
           <%= f.date_field :start_date_gteq, class: "form-control" %>
         </div>
@@ -25,8 +25,8 @@
           <%= f.date_field :target_date_lteq, class: "form-control" %>
         </div>
         <div class="col-4 col-xl-2">
-          <%= f.label :status_eq, "達成状況" %>
-          <%= f.search_field :status_eq %>
+          <%= f.label :status_eq, "進捗" %>
+          <%= f.number_field :status_eq %>
         </div>
         <div class="col-4 d-flex align-items-end">
           <%= button_tag(icon_with_text("search", "検索"), class: "btn btn-primary me-1") %>
@@ -46,19 +46,25 @@
   <div class="card-body mx-3">
     <%= turbo_frame_tag "goals-list" do %>
       <div class="row py-2">
-        <div class="col-1 mt-auto">
+        <div class="col-3 mt-auto">
           <%= sort_link(@search, :book_title) %>
         </div>
         <div class="col-1 mt-auto">
           <%= sort_link(@search, :start_date) %>
         </div>
-        <div class="col-1 mt-auto">
+        <div class="col-2 mt-auto">
           <%= sort_link(@search, :target_date) %>
         </div>
         <div class="col-1 mt-auto">
+          <%= sort_link(@search, :pages_per_day) %>
+        </div>
+        <div class="col-2 mt-auto">
+          <%= sort_link(@search, :reading_pages) %>
+        </div>
+        <div class="col-2 mt-auto">
           <%= sort_link(@search, :status) %>
         </div>
-        <div class="col-4 d-flex justify-content-end">
+        <div class="col-1 d-flex justify-content-end">
           <%= link_to icon_with_text("plus-circle", "登録"),
                       new_goal_path,
                       class: "btn btn-outline-primary",

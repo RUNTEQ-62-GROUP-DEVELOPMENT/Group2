@@ -4,19 +4,19 @@
     <h3><%= goal.book.title %></h3>
   </div>
   <div class="col-1 my-auto">
-    <p>開始日: <%= goal.start_date %></p>
+    <p><%= goal.start_date %></p>
   </div>
   <div class="col-2 my-auto">
-    <p>目標日: <%= goal.target_date %></p>
+    <p><%= goal.target_date %></p>
   </div>
   <div class="col-1 my-auto">
-    <p>目標ペース（ページ/日）: <%= goal.pages_per_day %></p>
+    <p><%= goal.pages_per_day %></p>
   </div>
   <div class="col-2 my-auto">
-    <p>現在のページ: <%= goal.reading_pages%></p>
+    <p><%= goal.reading_pages%></p>
   </div>
-  <div class="col-1 my-auto">
-    <p>進捗: <%=  goal.status %></p>
+  <div class="col-2 my-auto">
+    <p><%= ((goal.reading_pages.to_f / goal.book.pages)*100).floor %>%<br><%= goal.reading_pages %> / <%= goal.book.pages %></p>
   </div>
 
  <div class="col-1">
