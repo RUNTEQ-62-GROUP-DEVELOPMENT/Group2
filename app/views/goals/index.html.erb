@@ -25,7 +25,7 @@
           <%= f.date_field :target_date_lteq, class: "form-control" %>
         </div>
         <div class="col-4 col-xl-2">
-          <%= f.label :status_eq, "進捗" %>
+          <%= f.label :status_eq, "達成状況", class: "form-label" %>
           <%= f.number_field :status_eq %>
         </div>
         <div class="col-4 d-flex align-items-end">
@@ -52,7 +52,7 @@
         <div class="col-1 mt-auto">
           <%= sort_link(@search, :start_date) %>
         </div>
-        <div class="col-2 mt-auto">
+        <div class="col-1 mt-auto">
           <%= sort_link(@search, :target_date) %>
         </div>
         <div class="col-1 mt-auto">
@@ -61,10 +61,10 @@
         <div class="col-2 mt-auto">
           <%= sort_link(@search, :reading_pages) %>
         </div>
-        <div class="col-2 mt-auto">
+        <div class="col-2 mt-auto text-center">
           <%= sort_link(@search, :status) %>
         </div>
-        <div class="col-1 d-flex justify-content-end">
+        <div class="col-2 d-flex justify-content-end">
           <%= link_to icon_with_text("plus-circle", "登録"),
                       new_goal_path,
                       class: "btn btn-outline-primary",
