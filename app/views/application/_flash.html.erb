@@ -1,0 +1,13 @@
+<% if success %>
+  <div class="alert alert-primary alert-dismissible">
+    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    <%= success %>
+  </div>
+<% end %>
+
+<% if danger %>
+  <div class="alert alert-danger alert-dismissible">
+    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    <%= danger %>
+  </div>
+<% end %>
