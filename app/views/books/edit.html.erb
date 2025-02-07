@@ -1,0 +1,10 @@
+<h1>本を編集する</h1>
+
+<%= render "form", book: @book %>
+
+<br>
+
+<div>
+  <%= link_to "詳細", @book %> |
+  <%= link_to "戻る", books_path %>
+</div>
