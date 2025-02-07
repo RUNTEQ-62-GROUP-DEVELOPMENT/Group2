@@ -35,6 +35,7 @@ ja:
     delete_confirm: 削除しますか？
     password_reset: パスワードリセット
     unspecified: 指定なし
+    cancel: キャンセル
     flash_message:
       created: "%{item}を作成しました"
       not_created: "%{item}を作成出来ませんでした"
@@ -66,6 +67,25 @@ ja:
       title: アカウント作成
       to_top_page: top画面へ
     create:
+      success: ユーザー登録が完了しました
+      failure: ユーザー登録に失敗しました
+  books:
+    index:
+      title: My本棚
+      search: 検索
+      list: 一覧
+      book_title: タイトル
+      author: 著者
+      book_status: ステータス
+      reset: リセット
+      back_list: 一覧へ戻る
+  boards:
+    new:
+      title: 掲示板作成
+    show:
+      title: 掲示板詳細
+    index:
+      title: 掲示板一覧
       success: アカウント登録が完了しました
       failure: アカウント登録に失敗しました
     edit:

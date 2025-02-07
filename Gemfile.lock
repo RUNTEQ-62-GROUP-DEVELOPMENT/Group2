@@ -81,6 +81,9 @@ GEM
       autoprefixer-rails (>= 9.1.0)
       popper_js (>= 2.9.2, < 3)
       sassc-rails (>= 2.0.0)
+    bootstrap5-kaminari-views (0.0.1)
+      kaminari (>= 0.13)
+      rails (>= 3.1)
     bootstrap_form (5.4.0)
       actionpack (>= 6.1)
       activemodel (>= 6.1)
@@ -102,6 +105,8 @@ GEM
     debug (1.10.0)
       irb (~> 1.10)
       reline (>= 0.3.8)
+    enum_help (0.0.19)
+      activesupport (>= 3.0.0)
     erubi (1.13.1)
     execjs (2.10.0)
     faker (3.5.1)
@@ -335,9 +340,11 @@ PLATFORMS
 DEPENDENCIES
   bootsnap
   bootstrap (~> 5.0.2)
+  bootstrap5-kaminari-views
   bootstrap_form
   capybara
   debug
+  enum_help (= 0.0.19)
   faker
   font-awesome-sass
   importmap-rails
