@@ -6,7 +6,7 @@
           <%= sidebar_link_to(mypages_path, "🐧", "マイページ") %>
         </li>
         <li class="nav-item mx-3">
-          <%= sidebar_link_to(nil, "🐶", "My本棚") %>
+          <%= sidebar_link_to(books_path, "🐶", "My本棚") %>
         </li>
         <li class="nav-item mx-3">
           <%= sidebar_link_to(nil, "🐱", "読書目標") %>
@@ -19,7 +19,6 @@
   </aside>
   <main>
     <%= tag.div("こんにちは、#{current_user.name} さん", class: 'text-end') %>
-    <%= render 'shared/flash_message' %>
     <div id="flash">
       <%= render "flash" %>
     </div>
