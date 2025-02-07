@@ -37,15 +37,21 @@ class GoalsController < ApplicationController
 
     @goal = current_user.goals.build(goal_params.merge(book_id: book.id, status: :unachieved))
     if @goal.save
-      flash.now.notice = "目標を登録しました。"
+      flash.now[:success] = "目標を登録しました。"
     else
       render :new, status: :unprocessable_entity
     end
   end
 
   def update
-    if @goal.update(goal_params)
-      flash.now.notice = "進捗を更新しました。"
+    if (params[:goal][:reading_pages]).to_i >= @goal.book.pages
+      status = :achievement
+    else
+      status = :unachieved
+    end
+
+    if @goal.update(goal_params.merge(status: status))
+      flash.now[:success] = "進捗を更新しました。"
     else
       render :edit, status: :unprocessable_entity
     end
@@ -53,7 +59,7 @@ class GoalsController < ApplicationController
 
   def destroy
     @goal.destroy
-    flash.now.notice = "読書目標を削除しました。"
+    flash.now[:success] = "読書目標を削除しました。"
   end
 
   private

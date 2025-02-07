@@ -16,7 +16,9 @@
     <p><%= goal.reading_pages%></p>
   </div>
   <div class="col-1 my-auto">
-    <p><%= ((goal.reading_pages.to_f / goal.book.pages)*100).floor %>%<br><%= goal.reading_pages %> / <%= goal.book.pages %></p>
+    <% if goal.book %>
+      <%= calc_reading_progress(goal.reading_pages, goal.book.pages) %>
+    <% end %>
   </div>
 
  <div class="col-1">

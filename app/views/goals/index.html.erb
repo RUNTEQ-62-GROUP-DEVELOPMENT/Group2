@@ -26,7 +26,7 @@
         </div>
         <div class="col-3 col-xl-1">
           <%= f.label :status_eq, "達成状況", class: "form-label" %>
-          <%= f.select :status_eq, Goal.statuses_i18n.invert.map{|key, value| [key, Goal.statuses[value]]}, { class: 'form-control' } %>
+          <%= f.select :status_eq, Goal.statuses_i18n.invert.map{|key, value| [key, Goal.statuses[value]]}, {include_blank: true}, { class: 'form-control' } %>
         </div>
         <div class="col-2 d-flex align-items-end">
           <%= button_tag(icon_with_text("search", "検索"), class: "btn btn-primary me-1") %>
