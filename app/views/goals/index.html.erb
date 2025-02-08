@@ -14,7 +14,14 @@
       <div class="row g3 mb-3">
         <div class="col-3 col-xl-2">
           <%= f.label :book_title_cont, "タイトル", class: "form-label" %>
-          <%= f.search_field :book_title_cont, class: "form-control" %>
+          <!--%= f.search_field :book_title_cont, class: "form-control" %-->
+          <%= f.collection_select :book_id,
+              current_user.books.order(created_at: :desc),
+              :id,
+              :title,
+              { prompt: "本を選択" },
+              { class: "form-control form-control-sm"}
+          %>
         </div>
         <div class="col-2 col-xl-2">
           <%= f.label :start_date_gteq, "読書開始日", class: "form-label" %>
@@ -80,7 +87,7 @@
       </div>
 
       <div class="d-flex justify-content-end mt-3">
-        <%= paginate @GOALS, theme: 'bootstrap-5' %>
+        <%= paginate @goals, theme: 'bootstrap-5' %>
       </div>
     <% end %>
   </div>

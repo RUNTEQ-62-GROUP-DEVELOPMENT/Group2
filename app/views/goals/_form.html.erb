@@ -3,12 +3,19 @@
     <div class="row py-2 border-top"> 
     <% if action_name == 'new' || action_name == 'create' %>
       <div class="col-2">
-          <%= form.text_field :book_title,
+          <%= form.collection_select :book_id,
+              current_user.books.order(created_at: :desc),
+              :id,
+              :title,
+              { prompt: "本を選択" },
+              { class: "form-control form-control-sm"}
+          %>
+          <!--%= form.text_field :book_title,
                             skip_label: true,
                             label_as_placeholder: true,
                             wrapper: false,
                             control_class: "form-control form-control-sm"
-          %>
+          %-->
       </div>
       <div class="col-2">
         <%= form.date_field :start_date,
