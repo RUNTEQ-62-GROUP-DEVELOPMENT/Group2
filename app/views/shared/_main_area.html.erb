@@ -12,13 +12,13 @@
           <%= sidebar_link_to(goals_path, "🐱", "読書目標") %>
         </li>
         <li class="nav-item mx-3">
-          <%= sidebar_link_to(nil, "🐸", "アカウント設定") %>
+          <%= sidebar_link_to(edit_user_path(current_user), "🐸", "アカウント設定") %>
         </li>
       </ul>
     </nav>
   </aside>
   <main>
-    <%= tag.div("こんにちは、#{current_user.name} さん", class: 'text-end') %>
+    <%= tag.div("こんにちは、#{current_user.name} さん", id: 'greeting', class: 'text-end') %>
     <div id="flash">
       <%= render "flash" %>
     </div>

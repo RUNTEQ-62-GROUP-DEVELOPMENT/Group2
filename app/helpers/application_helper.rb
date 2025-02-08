@@ -17,7 +17,7 @@ module ApplicationHelper
     classes << "active" if current_page?(path)
 
     link_to(path, class: classes) do
-      tag.span(class:"me-2") { emoji } + tag.span { text }
+      tag.span(class: "me-2") { emoji } + tag.span { text }
     end
   end
 
