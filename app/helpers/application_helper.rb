@@ -1,6 +1,6 @@
 module ApplicationHelper
   def calc_reading_progress(current_page, pages)
-    if current_page == pages
+    if current_page >= pages
       tag.span('達成！！')
     else
       progress = (current_page.to_f / pages * 100).floor

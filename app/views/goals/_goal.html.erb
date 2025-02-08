@@ -1,0 +1,31 @@
+<%= turbo_frame_tag goal do %>
+<div class="row py-2 border-top">
+  <div class="col-2 my-auto">
+    <p><%= goal.book.title %></p>
+  </div>
+  <div class="col-2 my-auto">
+    <p><%= goal.start_date %></p>
+  </div>
+  <div class="col-2 my-auto">
+    <p><%= goal.target_date %></p>
+  </div>
+  <div class="col-2 my-auto">
+    <p><%= goal.pages_per_day %></p>
+  </div>
+  <div class="col-2 my-auto">
+    <p><%= goal.reading_pages%></p>
+  </div>
+  <div class="col-1 my-auto">
+    <% if goal.book %>
+      <%= calc_reading_progress(goal.reading_pages, goal.book.pages) %>
+    <% end %>
+  </div>
+
+ <div class="col-1">
+    <div class="d-flex justify-content-end">
+      <%= link_to "編集", edit_goal_path(goal), class: "btn btn-sm btn-outline-primary me-2" %>
+      <%= link_to "削除", goal, class: "btn btn-sm btn-outline-danger", data: { turbo_method: :delete, turbo_confirm: "本当に削除しますか？" } %>
+    </div>
+  </div>
+</div>
+<% end %>
