@@ -1,8 +1,8 @@
 <!-- 見出し -->
-<h4 class="fw-bold">
+<h2 class="fw-bold">
   <span class="me-1">読書目標</span>
   <span>📚</span>
-</h4>
+</h2>
 <!-- 検索フォーム -->
 <div class="card shadow mt-3">
   <div class="card-header">
@@ -14,7 +14,6 @@
       <div class="row g3 mb-3">
         <div class="col-3 col-xl-2">
           <%= f.label :book_id_eq, "タイトル", class: "form-label" %>
-          <!--%= f.search_field :book_title_cont, class: "form-control" %-->
           <%= f.collection_select :book_id_eq,
               current_user.books.order(created_at: :desc),
               :id,
