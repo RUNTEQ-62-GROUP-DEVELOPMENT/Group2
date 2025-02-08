@@ -17,15 +17,13 @@ class GoalsController < ApplicationController
    @goals = @search.result.page(params[:page])
   end
 
-  def show
-  end
+  def show; end
 
   def new
    @goal = Goal.new
   end
 
-  def edit
-  end
+  def edit; end
 
   def create
     @goal = current_user.goals.build(goal_params)
@@ -58,7 +56,7 @@ class GoalsController < ApplicationController
   end
 
   def destroy
-    @goal.destroy
+    @goal.destroy!
     flash.now[:success] = "読書目標を削除しました。"
   end
 
