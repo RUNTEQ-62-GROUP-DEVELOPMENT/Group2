@@ -1,0 +1,7 @@
+<%= turbo_stream.replace @user do %>
+  <%= render 'edit_form', user: @user %>
+<% end %>
+<%= turbo_stream.update 'greeting' do %>
+  <%= "こんにちは、#{current_user.name} さん" %>
+<% end %>
+<%= turbo_stream_flash %>

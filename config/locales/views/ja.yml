@@ -49,8 +49,16 @@ ja:
       title: アカウント作成
       to_top_page: top画面へ
     create:
-      success: ユーザー登録が完了しました
-      failure: ユーザー登録に失敗しました
+      success: アカウント登録が完了しました
+      failure: アカウント登録に失敗しました
+    edit:
+      page_title: アカウント設定
+      title: アカウント設定
+    update:
+      success: アカウント設定が完了しました
+      failure: アカウント設定に失敗しました
+    destroy:
+      success: アカウントを削除しました
   books:
     index:
       title: My本棚
