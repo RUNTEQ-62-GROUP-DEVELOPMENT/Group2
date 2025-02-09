@@ -1,20 +1,22 @@
-<div class="row py-2 border-top">
-  <div class="col-3 my-auto">
-    <%= book.title %>
-  </div>
-  <div class="col-3 my-auto">
-    <%= book.author %>
-  </div>
-    <div class="col-2 my-auto">
-    <%= book.pages %>
-  </div>
-    <div class="col-2 my-auto">
-    <%= book.status %>
-  </div>
-  <div class="col-2">
-    <div class="d-flex justify-content-end">
-      <%= link_to "編集", edit_book_path(book), class: "btn btn-sm btn-outline-primary me-2" %>
-      <%= button_to "削除", book, method: :delete, class: "btn btn-sm btn-outline-danger" %>
+<%= turbo_frame_tag book do %>
+  <div class="row py-2 border-top">
+    <div class="col-3 my-auto">
+      <%= book.title %>
+    </div>
+    <div class="col-3 my-auto">
+      <%= book.author %>
+    </div>
+      <div class="col-2 my-auto">
+      <%= book.pages %>
+    </div>
+      <div class="col-2 my-auto">
+      <%= book.status %>
+    </div>
+    <div class="col-2">
+      <div class="d-flex justify-content-end">
+        <%= link_to "編集", edit_book_path(book), class: "btn btn-sm btn-outline-primary me-2" %>
+        <%= button_to "削除", book, method: :delete, class: "btn btn-sm btn-outline-danger", form: { data: { turbo_confirm: "本当に削除しますか？" } } %>
+      </div>
     </div>
   </div>
-</div>
+<% end %>

@@ -1,16 +1,6 @@
 <p style="color: green"><%= notice %></p>
 
-<div id="<%= dom_id @cat %>">
-  <p>
-    <strong>タイトル:</strong>
-    <%= @book.title %>
-  </p>
-
-  <p>
-    <strong>著者:</strong>
-    <%= @book.author %>
-  </p>
-</div>
+<%= render @book %>
 
 <div>
   <%= link_to "編集", edit_book_path(@book) %> |

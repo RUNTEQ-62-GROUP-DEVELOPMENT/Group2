@@ -8,7 +8,7 @@ class Book < ApplicationRecord
   validates :status, presence: true
 
   def self.ransackable_attributes(auth_object = nil)
-    ["title", "author", "status"]
+    ["title", "author", "pages", "status"]
   end
 
   def self.ransortable_attributes(auth_object = nil)

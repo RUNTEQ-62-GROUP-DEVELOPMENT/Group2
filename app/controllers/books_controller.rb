@@ -4,8 +4,6 @@ class BooksController < ApplicationController
   # GET /books or /books.json
   def index
     @search = current_user.books.ransack(params[:q])
-    #エラーになる
-    #@search.sorts = 'id desc' if @search.sorts.empty?
     @books = @search.result.page(params[:page])
   end
 
@@ -26,7 +24,7 @@ class BooksController < ApplicationController
   def create
     @book = current_user.books.new(book_params)
     if @book.save
-      redirect_to @book, notice: "本を登録しました"
+      flash.now.notice = "本を登録しました。"
     else
       render :new, status: :unprocessable_entity
     end
@@ -35,8 +33,8 @@ class BooksController < ApplicationController
 
   # PATCH/PUT /books/1 or /books/1.json
   def update
-    if @book.update
-      redirect_to @book, notice: "本を更新しました"
+    if @book.update(book_params)
+      flash.now.notice = "ねこを更新しました。"
     else
       render :edit, status: :unprocessable_entity
     end
@@ -45,13 +43,13 @@ class BooksController < ApplicationController
   # DELETE /books/1 or /books/1.json
   def destroy
     @book.destroy
-    redirect_to books_path, notice: "本を削除しました。"
+    flash.now.notice = "本を削除しました。"
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_book
-      @book = Book.find(params[:id])
+      @book = current_user.books.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.
